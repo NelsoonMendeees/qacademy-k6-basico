@@ -1,0 +1,19 @@
+{
+  "name": "tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "K6_WEB_DASHBOARD_PERIOD=2s K6_WEB_DASHBOARD=true k6 run ./test/script.js",
+    "export:result": "K6_WEB_DASHBOARD_PERIOD=2s K6_WEB_DASHBOARD=true K6_WEB_DASHBOARD_EXPORT=loadTest.html k6 run ./test/script.js"
+  },
+  "prettier": {
+    "printWidth": 180,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "none"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
