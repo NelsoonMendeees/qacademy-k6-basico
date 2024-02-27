@@ -1,10 +1,10 @@
 import { sleep, group } from 'k6'
 import { getHeader } from '../config/headers.js'
-import { configIterations, configStages, configVus } from '../config/config.js'
+import { configStages, configStress, configSmoke } from '../config/config.js'
 import { generateUser } from '../helpers/generatePayload.js'
 import signup from '../scripts/signup/signup.js'
 
-export const options = configStages
+export const options = configStress
 
 export default function () {
   group('Post Users', () => {
@@ -12,5 +12,13 @@ export default function () {
     const headers = getHeader()
 
     signup(payload, headers)
+    sleep(1)
   })
 }
+
+
+// ativar dashboard  
+// K6_WEB_DASHBOARD_PERIOD=2s K6_WEB_DASHBOARD=true k6 run ./test/script.js
+
+// ativar dashboard e exportar report
+// K6_WEB_DASHBOARD_PERIOD=2s K6_WEB_DASHBOARD=true K6_WEB_DASHBOARD_EXPORT=./report/loadTest.html k6 run ./test/script.js
